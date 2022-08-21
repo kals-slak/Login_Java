@@ -29,6 +29,26 @@ public class RegistrationServlet extends HttpServlet {
 		RequestDispatcher dispatcher= null;
 		Connection con = null;
 		
+		if(name==null || name.equals("")) {
+			request.setAttribute("status", "InvalidName");
+			dispatcher = request.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(request, response);
+		}
+		if(pass==null || pass.equals("")) {
+			request.setAttribute("status", "InvalidPass");
+			dispatcher = request.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(request, response);
+		}
+		if(mail==null || mail.equals("")) {
+			request.setAttribute("status", "InvalidMail");
+			dispatcher = request.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(request, response);
+		}
+		if(contact==null || contact.equals("")) {
+			request.setAttribute("status", "InvalidContact");
+			dispatcher = request.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(request, response);
+		}
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
